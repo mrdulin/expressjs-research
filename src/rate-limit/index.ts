@@ -21,4 +21,8 @@ async function createServer(): Promise<http.Server> {
   });
 }
 
+if (require.main === module) {
+  createServer();
+}
+
 export { createServer };
