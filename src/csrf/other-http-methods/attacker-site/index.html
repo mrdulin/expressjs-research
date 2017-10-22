@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>attacker site</title>
+</head>
+
+<body>
+  <p>Fortunately, this request will not be executed by modern web browsers thanks to same-origin policy restrictions.
+    This restriction is enabled by default unless the target web site explicitly opens up cross-origin requests from
+    the attacker's (or everyone's) origin by using CORS with the following header:</p>
+
+  <pre>Access-Control-Allow-Origin: *</pre>
+
+  <p>Browser console will throw an error:</p>
+  <pre>Failed to load http://localhost:4000/transfer: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://127.0.0.1:8080' is therefore not allowed access.</pre>
+
+  <button type='button' id='eval-button'>Eval Button</button>
+
+  <p>So, you must be careful to enable CORS and add trusted domain to whilelist</p>
+
+  <script>
+    (function () {
+      window.onload = function () {
+        const $evalButton = document.getElementById('eval-button');
+        var x = new XMLHttpRequest();
+        $evalButton.onclick = function () {
+          x.open("PUT", "http://localhost:4000/transfer", true);
+          x.setRequestHeader("Content-Type", "application/json");
+          x.send(JSON.stringify({ "fromAccount": "google", "toAccount": "attacker", "amount": 100 }));
+        }
+
+      }
+    })();
+  </script>
+</body>
+
+</html>
