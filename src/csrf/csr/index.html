@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id='login'>Login</button>
+  <p id='login-status'></p>
+  <p>Money transfer</p>
+  <form id='money-transfer-form'>
+    <div>
+      <label>
+        From user: <input type="text" placeholder="type username" name='fromAccount' value="google">
+      </label>
+    </div>
+    <div>
+      <label>
+        To user: <input type="text" placeholder="type username" name='toAccount' value="github">
+      </label>
+    </div>
+    <div>
+      <label>amount: <input type="number" name='amount' value="100"></label>
+    </div>
+    <input type="submit">
+  </form>
+  <p id='money-transfer-status'></p>
+  <script>
+    (function () {
+      window.onload = function () {
+        const $loginBtn = document.getElementById('login');
+        const $loginStatus = document.getElementById('login-status')
+        const $moneyTransferForm = document.getElementById('money-transfer-form')
+        const $moneyTransferStatus = document.getElementById('money-transfer-status')
+        $loginBtn.onclick = function () {
+          fetch('http://localhost:4000/login', {
+            method: 'POST',
+            credentials: 'include'
+          }).then(() => {
+            $loginStatus.textContent = 'Login Success';
+          }).catch(() => {
+            $loginStatus.textContent = 'Login Failed';
+          })
+        }
+
+        $moneyTransferForm.onsubmit = function (event) {
+          event.preventDefault();
+          const elements = event.target;
+          const { fromAccount, toAccount, amount } = elements;
+
+          const csrfToken = getCookie('csrfToken')
+
+          fetch('http://localhost:4000/transfer', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'X-CSRF-Token': csrfToken,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              fromAccount: fromAccount.value,
+              toAccount: toAccount.value,
+              amount: amount.value
+            })
+          }).then((res) => {
+            if (res.status !== 200) {
+              return Project.reject();
+            }
+            $moneyTransferStatus.textContent = 'Money transfer Success'
+          }).catch(() => {
+            $moneyTransferStatus.textContent = 'Money transfer Failed'
+          })
+        }
+      }
+
+      function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+      }
+    })();
+  </script>
+</body>
+
+</html>

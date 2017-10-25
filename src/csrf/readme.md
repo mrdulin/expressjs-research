@@ -4,3 +4,4 @@
 - https://github.com/pillarjs/understanding-csrf
 - https://wiki.mozilla.org/Security/Referrer
 - http://kb.mozillazine.org/Network.http.sendRefererHeader
+- https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/

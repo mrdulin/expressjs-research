@@ -4,6 +4,7 @@ import exphbs from 'express-handlebars';
 import csurf from 'csurf';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 import { config } from '../../config';
 import { logger } from '../../utils';
@@ -13,15 +14,19 @@ async function main(): Promise<http.Server> {
   const app: express.Application = express();
   app.engine('handlebars', exphbs());
   app.set('view engine', 'handlebars');
+  app.use(cors({ origin: ['http://localhost:8080'], credentials: true }));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
   app.use(cookieParser());
-  app.use(csurf({ cookie: true }));
 
-  app.get('/', (req, res) => {
-    res.render('index', { csrfToken: req.csrfToken() });
+  app.post('/login', csurf({ cookie: true, ignoreMethods: ['POST'] }), (req, res) => {
+    const csrfToken: string = req.csrfToken();
+    logger.info(`csrfToken: ${csrfToken}`);
+    res.cookie('csrfToken', csrfToken);
+    res.send('login success');
   });
 
+  app.use(csurf({ cookie: true }));
   app.post('/transfer', (req, res) => {
     logger.info({ label: 'req.cookie', message: req.cookies });
     logger.info({ label: 'req.body', message: req.body });
@@ -36,6 +41,13 @@ async function main(): Promise<http.Server> {
     } else {
       res.status(500).send('User not found');
     }
+  });
+
+  app.use((err, req, res, next) => {
+    if (err.code !== 'EBADCSRFTOKEN') {
+      return next(err);
+    }
+    res.status(403).send('invalid csrf token');
   });
 
   return app.listen(config.PORT, () => {
