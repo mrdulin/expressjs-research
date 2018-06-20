@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <form id='auth-form'>
+    <div>
+      <label for="username">username: </label>
+      <input type="text" name='username' />
+    </div>
+    <div>
+      <label for="password">password: </label>
+      <input type="password" name='password' />
+    </div>
+    <button type='submit'>sign in</button>
+  </form>
+
+  <p>Output:
+    <span id='console'></span>
+  </p>
+
+  <p>HTTP Basic authentication虽然十分简单，但仍有一些需要注意的地方：</p>
+  <ul>
+    <li>用户名和密码在每次请求时都会被带上，即使请求是通过安全连接发送的，这也是潜在的可能暴露它们的地方。</li>
+    <li>如果网站使用的加密方法十分弱，或者被破解，那么用户名和密码将会马上泄露。</li>
+    <li>用户通过这种方式进行验证时，并没有登出的办法</li>
+    <li>同样，登陆超时也是没有办法做到的，你只能通过修改用户的密码来模拟。</li>
+  </ul>
+
+  <p>相关链接：</p>
+  <a href="https://zh.wikipedia.org/wiki/HTTP%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81">wiki HTTP基本认证</a>
+  <a href="https://segmentfault.com/a/1190000004086946">web权限验证方法说明</a>
+
+  <script>
+    void function (window, document) {
+      window.onload = init;
+
+      function Core(options) {
+        this.username = options.username || '';
+        this.password = options.password || '';
+      }
+
+      Core.prototype.ajax = function ajax(opts) {
+        var xhr = new XMLHttpRequest();
+        var method = opts.method || 'get';
+        if (!opts.url) throw new Error('Must pass a url to ajax method');
+        var url = opts.url;
+        var successCallback = opts.success || function () { };
+        var errorCallback = opts.error || function () { };
+
+        xhr.open(method, url, false, this.username, this.password);
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            successCallback.call(null, xhr);
+          } else {
+            errorCallback.call(null, xhr);
+          }
+        }
+
+        xhr.send();
+      };
+
+      function init() {
+        var form = document.getElementById('auth-form');
+        form.onsubmit = function handleSubmit(e) {
+          e.preventDefault();
+          var user = {
+            username: this.username.value.trim(),
+            password: this.password.value.trim()
+          }
+
+          var core = new Core(user);
+          core.ajax({
+            url: 'http://localhost:3000/login',
+            success: function (res) {
+              document.getElementById('console').textContent = res.responseText;
+            },
+            error: function (xhr) {
+              alert('Wrong credentials...');
+              document.getElementById('console').textContent = xhr.responseText;
+            }
+          });
+        }
+      }
+
+    }(window, document)
+  </script>
+</body>
+
+</html>
