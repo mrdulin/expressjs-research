@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Server-sent events</title>
+  <script src="/node_modules/eventsource//example/eventsource-polyfill.js"></script>
+</head>
+
+<body>
+  <div class=col>
+    <h2>EventSource</h2>
+    <ul id=es-messages>
+    </ul>
+  </div>
+
+  <div class=col>
+    <h2>EventSourcePolyfill</h2>
+    <ul id=es-polyfill-messages>
+    </ul>
+  </div>
+
+  <script>
+    function subscribe(es, ul) {
+      es.addEventListener('server-time', function (e) {
+        var li = document.createElement("LI");
+        li.appendChild(document.createTextNode(e.data));
+        ul.appendChild(li);
+      });
+    }
+    subscribe(new EventSource('/sse'), document.getElementById('es-messages'));
+    subscribe(new EventSourcePolyfill('/sse'), document.getElementById('es-polyfill-messages'));
+  </script>
+</body>
+
+</html>
