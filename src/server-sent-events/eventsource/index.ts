@@ -10,7 +10,10 @@ import { config } from '../../config';
 async function main(): Promise<http.Server> {
   const app: express.Application = express();
   app.use(express.static(path.resolve(__dirname, '.')));
-  app.use('/node_modules', express.static(path.resolve(__dirname, '../../../node_modules')));
+  app.use(
+    '/node_modules',
+    express.static(path.resolve(__dirname, '../../../node_modules'))
+  );
 
   app.get('/sse', (req, res) => {
     logger.info('new connection');
