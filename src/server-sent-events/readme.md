@@ -3,3 +3,4 @@
 ## 参考
 
 - https://github.com/EventSource/node-ssestream
+- https://github.com/EventSource/eventsource
