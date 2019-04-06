@@ -1,10 +1,10 @@
 {
   "name": "expressjs-research",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Express.js and node.js in action",
+  "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require ts-node/register"
   },
   "repository": {
     "type": "git",
@@ -26,21 +26,29 @@
     "eventsource": "^1.0.7",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
+    "express-rate-limit": "^3.4.0",
     "express-session": "^1.15.5",
     "formidable": "^1.0.17",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
     "ssestream": "^1.0.1",
     "winston": "^3.1.0"
   },
   "devDependencies": {
     "@types/basic-auth": "^1.1.2",
     "@types/body-parser": "^1.17.0",
+    "@types/chai": "^4.1.7",
     "@types/cookie-parser": "^1.4.1",
     "@types/cors": "^2.8.4",
     "@types/csurf": "^1.9.35",
     "@types/express": "^4.16.0",
     "@types/express-handlebars": "0.0.30",
+    "@types/express-rate-limit": "^3.3.0",
     "@types/express-session": "^1.15.11",
     "@types/faker": "^4.1.4",
+    "@types/mocha": "^5.2.6",
+    "@types/request": "^2.48.1",
+    "@types/request-promise": "^4.1.42",
     "chai": "^4.1.2",
     "faker": "^4.1.0",
     "http-server": "^0.11.1",
