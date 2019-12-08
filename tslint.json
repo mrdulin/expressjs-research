@@ -1,6 +1,6 @@
 {
   "defaultSeverity": "error",
-  "extends": ["tslint:recommended"],
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
   "jsRules": {},
   "rules": {
     "ordered-imports": false,
@@ -10,6 +10,5 @@
     "max-classes-per-file": false,
     "arrow-parens": false,
     "no-console": false
-  },
-  "rulesDirectory": []
+  }
 }
