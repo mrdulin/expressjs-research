@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <form id="isyeribul"><input id="txt1" value="websocket example" type="search" placeholder="search" /></form>
+    </main>
+    <script>
+      var form;
+      var websocket;
+      function init() {
+        form = document.getElementById('isyeribul');
+        websocket = new WebSocket('ws://localhost:8080/echo');
+        websocket.onopen = function(evt) {
+          console.log('CONNECTED');
+          sendfunc();
+        };
+        websocket.onmessage = function(event) {
+          form.style.display = 'none';
+        };
+      }
+      window.addEventListener('load', init, false);
+
+      function sendfunc() {
+        var text = document.getElementById('txt1').value;
+        websocket.send(text);
+        console.log(text + '  sent');
+      }
+    </script>
+  </body>
+</html>
