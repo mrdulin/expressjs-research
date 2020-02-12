@@ -4,7 +4,7 @@
   "description": "Express.js and node.js in action",
   "main": "",
   "scripts": {
-    "test": "mocha --require ts-node/register --timeout 2000",
+    "test": "mocha --require ts-node/register --timeout 5000",
     "test:coverage": "nyc npm t"
   },
   "repository": {
@@ -31,6 +31,7 @@
     "express-session": "^1.17.0",
     "express-ws": "^4.0.0",
     "formidable": "^1.0.17",
+    "pg": "^7.18.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.5",
     "ssestream": "^1.0.1",
@@ -49,6 +50,7 @@
     "@types/express-session": "^1.15.16",
     "@types/faker": "^4.1.8",
     "@types/mocha": "^5.2.7",
+    "@types/pg": "^7.14.1",
     "@types/proxyquire": "^1.3.28",
     "@types/request": "^2.48.3",
     "@types/request-promise": "^4.1.45",
