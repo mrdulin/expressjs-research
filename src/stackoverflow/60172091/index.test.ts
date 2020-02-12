@@ -5,7 +5,10 @@ describe('60172091', () => {
   it('should valdiate', async () => {
     const pgClientStub = {
       connect: sinon.stub().returnsThis(),
-      query: sinon.stub().resolves('asdf'),
+      query: sinon
+        .stub()
+        .withArgs(`SELECT * FROM "user" WHERE "user_id" = '1'`)
+        .resolves('asdf'),
     };
     const pgStub = sinon.stub().callsFake(() => pgClientStub);
     const MyClass = proxyquire('./index', {
