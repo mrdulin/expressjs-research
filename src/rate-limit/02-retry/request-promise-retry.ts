@@ -1,15 +1,15 @@
 import rp from 'request-promise';
 
-async function sleep(ms) {
+async function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function getNextRetryDelay(retryNumber) {
+function getNextRetryDelay(retryNumber: number) {
   return Math.pow(2, retryNumber) * 1000 + Math.floor(Math.random() * 1000);
 }
 
 // https://developers.google.com/analytics/devguides/reporting/core/v3/coreErrors#backoff
-export async function requestWithExponentialBackoff(url) {
+export async function requestWithExponentialBackoff(url): Promise<any> {
   for (let i = 0; i < 5; i++) {
     try {
       return await rp(url);
