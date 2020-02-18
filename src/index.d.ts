@@ -5,3 +5,9 @@ declare module 'ssestream' {
     public pipe(destination: NodeJS.WritableStream, options?: { end?: boolean }): any;
   }
 }
+
+declare interface PromiseConstructor {
+  allSettled(
+    promises: Array<Promise<any>>,
+  ): Promise<Array<{ status: 'fulfilled' | 'rejected'; value?: any; reason?: any }>>;
+}
