@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/mrdulin/expressjs-research#readme",
   "dependencies": {
+    "async": "^3.2.0",
+    "async-sema": "^3.1.0",
     "basic-auth": "^1.0.4",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
@@ -38,6 +40,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@types/async": "^3.0.8",
     "@types/basic-auth": "^1.1.2",
     "@types/body-parser": "^1.17.1",
     "@types/chai": "^4.2.6",

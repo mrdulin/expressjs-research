@@ -5,7 +5,7 @@ import http from 'http';
 const port = 3000;
 const createUserLimiter = new rateLimit({
   windowMs: 1000,
-  max: 50,
+  max: 3,
   message: 'Max QPS = 50',
 });
 
