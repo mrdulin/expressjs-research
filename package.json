@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mrdulin/expressjs-research#readme",
   "dependencies": {
+    "adm-zip": "^0.4.14",
     "async": "^3.2.0",
     "async-sema": "^3.1.0",
     "aws-param-store": "^3.2.0",
