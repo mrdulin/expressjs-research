@@ -1,4 +1,4 @@
-import { createLogger, transports, format, Logger } from "winston";
+import { createLogger, transports, format, Logger } from 'winston';
 
 function createAppLogger(): Logger {
   const { combine, timestamp, printf, colorize } = format;
@@ -8,13 +8,11 @@ function createAppLogger(): Logger {
       colorize(),
       timestamp(),
       printf((info): string => {
-        const label: string = info.label ? " " + info.label + " " : "";
-        return `${info.timestamp}${label}[${info.level}] : ${JSON.stringify(
-          info.message
-        )}`;
-      })
+        const label: string = info.label ? ' ' + info.label + ' ' : '';
+        return `${info.timestamp}${label}[${info.level}] : ${JSON.stringify(info.message)}`;
+      }),
     ),
-    transports: [new transports.Console()]
+    transports: [new transports.Console()],
   });
 }
 
