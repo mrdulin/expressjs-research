@@ -4,8 +4,8 @@ const config = {
 
   COOKIE: {
     SECRET: process.env.COOKIE_SECRET || 'fuckbook',
-    MAX_AGE: 60 * 60 * 1000
-  }
+    MAX_AGE: 60 * 60 * 1000,
+  },
 };
 
 export { config };
