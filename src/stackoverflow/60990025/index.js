@@ -1,9 +1,10 @@
+// Order is matter, assign config to global firstly, then the controllers can access it.
+global.env = {};
+global.env.config = require('./config');
+
 const express = require('express');
 const server = express();
 const userController = require('./userController');
-
-global.env = {};
-global.env.config = require('./config');
 
 server.get('/api/user', userController.getUser);
 
