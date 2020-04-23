@@ -16,7 +16,7 @@ const app = express()
     // res.setHeader('Set-Cookie', [`name=react; ${cookieOptions}`, `age=2; ${cookieOptions}`]);
     //2
     res.set({
-      'Set-Cookie': [`name=rxjs; ${cookieOptions}`, `age=2; ${cookieOptions}`]
+      'Set-Cookie': [`name=rxjs; ${cookieOptions}`, `age=2; ${cookieOptions}`],
     });
     next();
   })
