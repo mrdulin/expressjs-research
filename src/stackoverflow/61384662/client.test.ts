@@ -1,6 +1,6 @@
 import { Client } from './client';
 import { expect } from 'chai';
-import requestPromise from 'request-promise';
+import requestPromise from 'request-promise-native';
 import sinon from 'sinon';
 
 describe('61384662', () => {
