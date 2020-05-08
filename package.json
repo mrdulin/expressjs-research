@@ -74,6 +74,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
     "faker": "^4.1.0",
     "http-server": "^0.12.3",
     "jsdom": "^16.2.2",

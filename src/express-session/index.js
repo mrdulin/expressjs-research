@@ -1,26 +1,29 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const credentials = require('../credentials');
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
 const app = express();
+const port = 5775;
+const { COOKIE_SECRET } = process.env;
 
-app.use(cookieParser(credentials.cookieSecret));
+app.use(cookieParser(COOKIE_SECRET));
 app.use(
   session({
-    secret: credentials.cookieSecret,
+    secret: COOKIE_SECRET,
     name: 'fucking-app.sid',
     cookie: {
       httpOnly: true,
       path: '/',
       // 10秒sessionId过期, 刷新页面会重新设置一个sessionId
       maxAge: 10 * 1000,
-      secure: false
+      secure: false,
     },
     store: new session.MemoryStore(),
     resave: false,
-    saveUninitialized: false
-  })
+    saveUninitialized: false,
+  }),
 );
 
 app.use((req, res, next) => {
@@ -43,4 +46,4 @@ app.get('/about', (req, res) => {
   res.sendFile(__dirname + '/about.html');
 });
 
-app.listen(5775);
+app.listen(port, () => console.log(`HTTP server is listening on http://localhost:${port}`));

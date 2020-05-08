@@ -9,11 +9,11 @@ const sessionHandler = session({
   cookie: {
     maxAge: config.COOKIE.MAX_AGE,
     httpOnly: true,
-    path: '/'
+    path: '/',
   },
   resave: false,
   saveUninitialized: false,
-  store: new session.MemoryStore()
+  store: new session.MemoryStore(),
 });
 
 const authHandler = (req, res, next) => {
