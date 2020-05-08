@@ -1,5 +1,4 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
@@ -8,7 +7,6 @@ const app = express();
 const port = 5775;
 const { COOKIE_SECRET } = process.env;
 
-app.use(cookieParser(COOKIE_SECRET));
 app.use(
   session({
     secret: COOKIE_SECRET,
@@ -27,7 +25,6 @@ app.use(
 );
 
 app.use((req, res, next) => {
-  console.log(req.signedCookies);
   console.log('SessionId:', req.sessionID);
   if (req.session.views) {
     req.session.views++;
