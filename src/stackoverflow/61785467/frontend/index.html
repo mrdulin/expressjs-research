@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      window.onload = async function() {
+        const REACT_APP_BACKEND_URL = 'http://localhost:3000/api/user';
+        const user = await fetch(REACT_APP_BACKEND_URL, {
+          crossDomain: true,
+          method: 'GET',
+          credentials: 'include',
+          origin: 'http://localhost:3001',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Credentials': true,
+          },
+        }).then((res) => res.json());
+        console.log('user:', user);
+      };
+    </script>
+  </body>
+</html>
