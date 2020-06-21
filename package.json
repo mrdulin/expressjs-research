@@ -20,6 +20,7 @@
   "homepage": "https://github.com/mrdulin/expressjs-research#readme",
   "dependencies": {
     "@azure/service-bus": "^1.1.6",
+    "@google-cloud/bigquery": "^4.7.0",
     "@sendgrid/mail": "^7.1.1",
     "adm-zip": "^0.4.14",
     "async": "^3.2.0",
