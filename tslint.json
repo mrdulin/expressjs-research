@@ -9,6 +9,7 @@
     "trailing-comma": false,
     "max-classes-per-file": false,
     "arrow-parens": false,
-    "no-console": false
+    "no-console": false,
+    "no-angle-bracket-type-assertion": false
   }
 }
