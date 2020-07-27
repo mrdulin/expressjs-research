@@ -51,7 +51,8 @@
     "request-promise-native": "^1.0.8",
     "socket.io": "^2.3.0",
     "ssestream": "^1.1.0",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "ws": "^7.3.1"
   },
   "devDependencies": {
     "@types/async": "^3.2.1",
@@ -77,6 +78,7 @@
     "@types/rewire": "^2.5.28",
     "@types/sinon": "^7.5.1",
     "@types/supertest": "^2.0.9",
+    "@types/ws": "^7.2.6",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "chai-http": "^4.3.0",

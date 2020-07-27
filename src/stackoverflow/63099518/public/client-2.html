@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>client 2</title>
+  </head>
+  <body>
+    <p>client 2</p>
+    <button id="test">Test</button>
+    <script>
+      (function() {
+        window.onload = function() {
+          const socket = new WebSocket('ws://localhost:3000');
+
+          // Connection opened
+          socket.addEventListener('open', function(event) {
+            socket.send('Hello Server! Client - 2');
+          });
+
+          // Listen for messages
+          socket.addEventListener('message', function(event) {
+            console.log('Message from server ', event.data);
+          });
+
+          const btn = document.getElementById('test');
+          btn.addEventListener('click', async () => {
+            try {
+              const res = await fetch('http://localhost:3000/external-api');
+              console.log(res);
+            } catch (error) {
+              console.log(error);
+            }
+          });
+        };
+      })();
+    </script>
+  </body>
+</html>
