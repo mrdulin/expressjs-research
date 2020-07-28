@@ -1,7 +1,7 @@
-const connect = require("connect");
-const bodyParser = require("body-parser");
-const util = require("util");
-const formidable = require("formidable");
+const connect = require('connect');
+const bodyParser = require('body-parser');
+const util = require('util');
+const formidable = require('formidable');
 
 //使用bodyParser()出现如下提示：
 //body-parser deprecated bodyParser: use individual json/urlencoded middlewares bodyParser.js:5:10
@@ -10,7 +10,7 @@ const formidable = require("formidable");
 //使用options.limit限制请求实体的大小，如果超出限制大小，报如下错误：
 //Error: request entity too large
 //node bodyParser.js & node request.js 用来测试limit
-const jsonParser = bodyParser.json({ limit: "1kb" });
+const jsonParser = bodyParser.json({ limit: '1kb' });
 
 //解析application/x-www-form-urlencoded的数据
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -41,19 +41,19 @@ const app = connect();
 }
 */
 app
-  .use("/upload", (req, res) => {
+  .use('/upload', (req, res) => {
     const form = new formidable.IncomingForm();
 
     form.parse(req, function(err, fields, files) {
-      res.writeHead(200, { "content-type": "text/plain" });
-      res.write("received upload:\n\n");
+      res.writeHead(200, { 'content-type': 'text/plain' });
+      res.write('received upload:\n\n');
       res.end(util.inspect({ fields: fields, files: files }));
     });
   })
   .use(urlencodedParser)
   .use(jsonParser)
   .use((req, res) => {
-    res.setHeader("Content-Type", "text/plain");
+    res.setHeader('Content-Type', 'text/plain');
     res.statusCode = 200;
     process.stdout.write(`req.body:  ${util.inspect(req.body)}\n`);
     let text = `'user is: ' ${req.body.username}\n`;
