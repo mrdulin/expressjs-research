@@ -3,10 +3,10 @@ import rateLimit from 'express-rate-limit';
 import http from 'http';
 
 const port = 3000;
-const createUserLimiter = new rateLimit({
+const createUserLimiter = rateLimit({
   windowMs: 30 * 1000,
   max: 2,
-  message: 'Too many users created from this IP, please try again after 30 seconds'
+  message: 'Too many users created from this IP, please try again after 30 seconds',
 });
 
 async function createServer(): Promise<http.Server> {
