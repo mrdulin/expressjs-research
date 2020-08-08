@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button type="button" id='getLocation'>获取经纬度</button>
+  <button type="button" id='getLocation_v2'>获取经纬度v2</button>
+
+  <script src="./jsonp.js"></script>
+  <script>
+    window.onload = init;
+
+    const obj = {
+      showLocation: function(data) {
+        console.log('window.obj.jsonpCallback', data);
+      }
+    }
+
+    function showLocation(data) {
+      console.log('window.showLocation', data);
+    }
+
+    function init() {
+      const doc = document;
+      const dom_getLocationBtn = doc.getElementById('getLocation');
+      const dom_getLocationBtnV2 = doc.getElementById('getLocation_v2');
+
+      const BAIDU_MAP_AK = 'p5NAB0QbVl1ZGkiLYbYsSTbwwyLpsAHU';
+      const API = `http://api.map.baidu.com/geocoder/v2/?ak=${BAIDU_MAP_AK}`;
+
+      const jsonp = jsonpWrapper();
+
+      //对于address字段可能会出现中文或其它一些特殊字符（如：空格），对于类似的字符要进行编码处理，编码成 UTF-8 字符的二字符十六进制值，
+      //凡是不在下表中的字符都要进行编码。
+
+      //字符集合	字符
+      //URL非保留字	a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 0 1 2 3 4 5 6 7 8 9 - _ . ~
+      //URL保留字	! * ' ( ) ; : @ & = + $ , / ? % # [ ]
+
+      //javascript中一般采用encodeURIComponent函数对特殊字符进行编码；
+
+      const address = '上海市 徐汇区 美罗城';
+      const addressEncode = encodeURIComponent(address);
+
+      const url = `${API}&address=${addressEncode}&output=json&callback=showLocation`;
+      const url_v1 = `${API}&address=${addressEncode}&output=json&callback=obj.showLocation`;
+      const url_v2 = `${API}&address=${addressEncode}&output=json`;
+
+      dom_getLocationBtn.onclick = function(e) {
+        jsonp(url_v2).then(data => {
+          console.log(data);
+        }).catch(e => {
+          console.log(e);
+        });
+      }
+
+      dom_getLocationBtnV2.onclick = function(e) {
+        jsonp_v1(url_v1);
+        jsonp_v1(url);
+      }
+
+    }
+
+    function jsonp_v1(url) {
+      const doc = document;
+      const dom_script = doc.createElement('script');
+      dom_script.src = url;
+      doc.body.appendChild(dom_script);
+      doc.body.removeChild(dom_script);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,10 +1,10 @@
 import auth from 'basic-auth';
 import express from 'express';
 import path from 'path';
-
-import { logger } from '../utils';
+import { createLogger } from 'dl-toolkits';
 import { config } from '../config';
 
+const logger = createLogger();
 const app: express.Application = express();
 
 app.get('/', (req: express.Request, res: express.Response) => {

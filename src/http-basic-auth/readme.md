@@ -15,7 +15,5 @@ HTTP Basic authentication 虽然十分简单，但仍有一些需要注意的地
 ## 参考
 
 - HTTP 基本认证 https://zh.wikipedia.org/wiki/HTTP%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81
-
 - web 权限验证方法说明 https://segmentfault.com/a/1190000004086946
-
 - https://github.com/jshttp/basic-auth

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jsonp - js</title>
+</head>
+
+<body>
+  <p>使用原生js实现jsonp</p>
+  <button type='button' id='jsonp'>jsonp</button>
+  <button type='button' id='json'>json</button>
+  <script>
+    window.onload = function () {
+      var doc = document;
+      var jsonpButton = doc.getElementById('jsonp');
+      var jsonButton = doc.getElementById('json');
+
+      jsonpButton.addEventListener('click', jsonpHandle, false);
+      jsonButton.addEventListener('click', jsonHandle, false);
+
+      function jsonpHandle() {
+        var script = doc.createElement('script');
+        script.src = '//localhost:3000/js/jsonp?callback=getData';
+        doc.body.appendChild(script);
+      }
+
+      function jsonHandle() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', '//localhost:3000/js/json');
+        xhr.send();
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            //由于前端服务器和后端服务器端口不一样，所以出现CORS问题
+            const data = xhr.response;
+            const jsonData = JSON.parse(data);
+            console.log(data, jsonData, jsonData.name);
+          }
+        }
+      }
+    }
+
+    // jsonp可以解决跨域问题
+    function getData(data) {
+      console.log(data);
+    }
+  </script>
+</body>
+
+</html>
