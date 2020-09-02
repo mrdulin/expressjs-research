@@ -23,6 +23,8 @@
   "homepage": "https://github.com/mrdulin/expressjs-research#readme",
   "dependencies": {
     "@azure/service-bus": "^1.1.8",
+    "@cloudnative/health-connect": "^2.1.0",
+    "@godaddy/terminus": "^4.4.1",
     "@google-cloud/bigquery": "^4.7.0",
     "@sendgrid/mail": "^7.2.3",
     "adm-zip": "^0.4.14",
