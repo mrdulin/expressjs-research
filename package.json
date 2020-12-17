@@ -63,6 +63,7 @@
     "request-promise-native": "^1.0.9",
     "socket.io": "^2.3.0",
     "ssestream": "^1.1.0",
+    "typeorm": "^0.2.29",
     "winston": "^3.3.3",
     "ws": "^7.3.1"
   },
