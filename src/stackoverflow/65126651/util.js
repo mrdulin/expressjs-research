@@ -1,7 +1,7 @@
-const a = require('./a');
+const { func2 } = require('./a');
 
 const func1 = () => {
-  return 'hello ' + a.func2();
+  return 'hello ' + func2();
 };
 
 module.exports = { func1 };
