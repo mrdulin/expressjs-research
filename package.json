@@ -99,6 +99,7 @@
     "chai-json-pattern": "^1.1.0",
     "chai-spies": "^1.0.0",
     "debug": "^4.3.1",
+    "deep-equal-in-any-order": "^1.0.28",
     "dotenv": "^8.2.0",
     "faker": "^5.1.0",
     "http-server": "^0.12.3",
