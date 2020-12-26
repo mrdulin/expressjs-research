@@ -1,3 +1,4 @@
+const { expect } = require('chai');
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var server = require('./index');
@@ -10,7 +11,7 @@ describe('Homepage', function (done) {
       .request(server.app)
       .get('/')
       .end(function (err, res) {
-        console.log(res.body);
+        console.log(res.text);
         done();
       });
   });
