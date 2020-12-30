@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+
+  </div>
+
+  <script type="text/babel">
+    (function () {
+      const e = React.createElement;
+
+      class Upload extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+
+        render() {
+          return (
+            <form action="http://localhost:5001/app-dev/us-central1/api/upload" encType="multipart/form-data" method="post">
+              <div className="form-group">
+                <input type="file" className="form-control-file" name="uploaded_file"></input>
+                <input type="text" className="form-control" placeholder="Number of speakers" name="nspeakers"></input>
+                <input type="submit" value="Get me the stats!" className="btn btn-default"></input>
+              </div>
+            </form>
+          )
+        }
+      }
+
+      const domContainer = document.querySelector('#container');
+      ReactDOM.render(e(Upload), domContainer);
+    })()
+  </script>
+
+</body>
+
+</html>
