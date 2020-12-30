@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <% if (err) { %>
+    <!-- contact-warning -->
+    <div id="message-warning">
+      <p>
+        <%= err.msg %>
+      </p>
+    </div>
+    <% } %>
+
+      <% if (success) { %>
+        <!-- contact-success -->
+        <div id="message-success">
+          <i class="fa fa-check"></i> <br />
+          <p>
+            <%= success.msg %>
+          </p>
+        </div>
+        <% } %>
+</body>
+
+</html>
