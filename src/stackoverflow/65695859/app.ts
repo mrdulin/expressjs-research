@@ -9,14 +9,15 @@ interface userInformation {
   email: string;
 }
 
-declare module 'express-session' {
-  interface SessionData {
-    user: userInformation;
-  }
-}
+// Comment out in order not to affect other examples
+// declare module 'express-session' {
+//   interface SessionData {
+//     user: userInformation;
+//   }
+// }
 class AppAPIController {
   public getUserByAuth(req: Request, res: Response) {
-    return res.json(req.session.user);
+    // return res.json(req.session.user);
   }
 }
 
