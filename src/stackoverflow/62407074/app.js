@@ -47,6 +47,7 @@ app.post('/login', (req, res) => {
 });
 
 io.on('connection', (socket) => {
+  console.log('a user connected');
   const cookieString = socket.request.headers.cookie;
   console.log('cookieString:', cookieString);
   if (cookieString) {
@@ -62,7 +63,6 @@ io.on('connection', (socket) => {
         console.log('userId: ', userId);
         console.log('name: ', name);
       });
-      console.log('a user connected');
     }
   }
 });
