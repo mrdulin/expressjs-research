@@ -98,6 +98,7 @@
     "@types/request-promise": "^4.1.47",
     "@types/rewire": "^2.5.28",
     "@types/sinon": "^7.5.1",
+    "@types/socket.io": "^2.1.12",
     "@types/supertest": "^2.0.10",
     "@types/ws": "^7.4.0",
     "chai": "^4.2.0",
