@@ -5,7 +5,8 @@
   "main": "",
   "scripts": {
     "test": "mocha --require ts-node/register --require jsdom-global/register --timeout 5000",
-    "test:coverage": "nyc npm t"
+    "test:coverage": "nyc npm t",
+    "generate": "echo 'generate'"
   },
   "repository": {
     "type": "git",
