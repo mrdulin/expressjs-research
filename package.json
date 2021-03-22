@@ -111,6 +111,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "chai-http": "^4.3.0",
+    "chai-json": "^1.0.0",
     "chai-json-pattern": "^1.1.0",
     "chai-spies": "^1.0.0",
     "debug": "^4.3.1",
