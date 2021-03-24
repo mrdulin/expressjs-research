@@ -18,5 +18,7 @@ describe('62400008', () => {
       Plaintext: 'some string',
       CiphertextBlob: Buffer.from('some string', 'utf-8'),
     });
+    sinon.assert.calledOnce(mKMS.decrypt);
+    sinon.assert.calledOnce(mKMS.promise);
   });
 });
