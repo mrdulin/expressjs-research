@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript" src="https://jverification.jiguang.cn/scripts/1.0.0/jverification-web.min.js"></script>
+  <script>
+
+    const JVerificationInterfacePromisify = {
+      init(option) {
+        return new Promise((resolve, reject) => {
+          window.JVerificationInterface.init({
+            ...option,
+            success: resolve,
+            fail: reject
+          });
+        })
+      },
+      checkVerifyEnable: window.JVerificationInterface.checkVerifyEnable
+    }
+    window.onload = async function onload() {
+      const initResult = await JVerificationInterfacePromisify.init({
+        // appkey: "1614da15ea57a27083963c7f", // 极光官网中创建应用后分配的 appkey，必填
+        appkey: '6713b8478f8408cd56224035',
+        debugMode: true, // 设置是否开启 debug 模式。true 则会打印更多的日志信息。设置 false 则只会输出 w、e 级别的日志。
+      });
+      console.log(initResult)
+      const verifyEnable = JVerificationInterfacePromisify.checkVerifyEnable()
+      console.log('verifyEnable: ', verifyEnable)
+      if (!verifyEnable) {
+        console.log("当前网络环境不支持认证");
+      }
+
+    }
+  </script>
+</body>
+
+</html>
