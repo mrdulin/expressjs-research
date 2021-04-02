@@ -134,6 +134,7 @@
     "ts-node": "^8.10.2",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "vconsole": "^3.4.0"
   }
 }
