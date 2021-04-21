@@ -97,6 +97,7 @@
     "@types/express-rate-limit": "^5.1.1",
     "@types/express-session": "^1.17.3",
     "@types/faker": "^5.1.5",
+    "@types/jsonwebtoken": "^8.5.1",
     "@types/lodash": "^4.14.167",
     "@types/mocha": "^8.2.0",
     "@types/multer": "^1.4.5",
