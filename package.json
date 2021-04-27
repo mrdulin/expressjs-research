@@ -58,6 +58,7 @@
     "firebase-functions": "^3.13.1",
     "formidable": "^1.2.2",
     "immutable": "^4.0.0-rc.12",
+    "jquery": "^3.6.0",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "morgan": "^1.10.0",
