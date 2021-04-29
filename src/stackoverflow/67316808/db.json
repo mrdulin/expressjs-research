@@ -1,0 +1,22 @@
+{
+  "classes": [
+    {
+      "title": "Office Syndrome",
+      "length": "60 Minutes",
+      "instructor": "A. W.",
+      "difficulty": "Intermediate",
+      "description": "Suitable for people who are always constantly inactive working in front of computers.",
+      "availableSpot": 9,
+      "id": 1
+    },
+    {
+      "title": "Digestive Flow",
+      "length": "60 Minutes",
+      "instructor": "MJ",
+      "difficulty": "Beginners",
+      "description": "Good for digestion",
+      "availableSpot": "8",
+      "id": 2
+    }
+  ]
+}
