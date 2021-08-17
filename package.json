@@ -25,6 +25,7 @@
   "homepage": "https://github.com/mrdulin/expressjs-research#readme",
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.18.0",
+    "@azure/event-hubs": "^5.6.0",
     "@azure/service-bus": "^1.1.8",
     "@cloudnative/health-connect": "^2.1.0",
     "@godaddy/terminus": "^4.5.0",
