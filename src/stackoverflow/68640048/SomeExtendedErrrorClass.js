@@ -1,0 +1,1 @@
+class SomeExtendedErrrorClass extends Error {}
