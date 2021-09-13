@@ -2,27 +2,17 @@
   "name": "expressjs-research",
   "version": "1.0.0",
   "description": "Learning express.js by examples",
-  "main": "",
   "scripts": {
     "test": "mocha --require ts-node/register --require jsdom-global/register --timeout 5000",
     "test:coverage": "nyc npm t",
     "generate": "echo 'generate'",
     "test:ava": "nyc ava --timeout=3000"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mrdulin/expressjs-research.git"
-  },
   "keywords": [
     "express.js",
     "node.js"
   ],
   "author": "mrdulin",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mrdulin/expressjs-research/issues"
-  },
-  "homepage": "https://github.com/mrdulin/expressjs-research#readme",
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.18.0",
     "@azure/event-hubs": "^5.6.0",
