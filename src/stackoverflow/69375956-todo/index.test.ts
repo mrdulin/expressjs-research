@@ -9,20 +9,23 @@ describe('69375956', () => {
   it('should pass', () => {
     expect(getIncorrectParams()).not.to.deep.equal(new URLSearchParams({ from: '2020', to: '2021', ids: 'abc-2' }));
   });
-  it.only('should 2', () => {
-    class A {
-      constructor(val) {
-        this.val = val;
+  it.only('should pass', () => {
+    class FakeURLSearchParams {
+      #init;
+      constructor(init) {
+        this.#init = init;
       }
-      hello() {}
+      get(key) {
+        return this.#init[key];
+      }
+      say() {}
     }
-    expect(new A()).to.deep.equal(new A());
+    const a = new FakeURLSearchParams({ x: 1 });
+    const b = new FakeURLSearchParams({ x: 2 });
+    for (let p in a.prototype) {
+      console.log(p);
+    }
+    expect(a).to.deep.equal(b);
+    expect(a.get('x')).not.to.equal(b.get('x'));
   });
 });
-
-const s = new URLSearchParams({ from: '2020', to: '2021', ids: 'abc-2' });
-for (let p in s) {
-  if (typeof s[p] !== 'function') {
-    console.log(p);
-  }
-}
