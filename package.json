@@ -112,6 +112,7 @@
     "chai-json": "^1.0.0",
     "chai-json-pattern": "^1.1.0",
     "chai-spies": "^1.0.0",
+    "chai-subset": "^1.6.0",
     "debug": "^4.3.1",
     "deep-equal-in-any-order": "^1.0.28",
     "dotenv": "^8.2.0",
