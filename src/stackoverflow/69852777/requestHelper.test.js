@@ -9,5 +9,6 @@ describe('69852777', () => {
     });
     const result = await requestHelper.request({ something: 'something' });
     sinon.assert.match(result, true);
+    sinon.assert.calledWithExactly(phinStub, { something: 'something' });
   });
 });
