@@ -46,7 +46,7 @@ app.use(
   Sentry.Handlers.errorHandler({
     shouldHandleError(error) {
       console.log('error: ', error.status);
-      // Capture all 404 and 500 errors
+      // Capture all 4XX and 500 errors
       if ((error.status && +error.status > 400) || error.status === 500) {
         return true;
       }
