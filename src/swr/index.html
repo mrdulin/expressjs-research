@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>swr</title>
+</head>
+
+<body>
+  <button id="get-user-swr-button">GET USERS(SWR)</button>
+  <ul id="user-list-swr"></ul>
+  <button id="get-user-button">GET USERS</button>
+  <ul id="user-list"></ul>
+  <p id="time"></p>
+  <script>
+    window.onload = () => {
+      let interval;
+      const baseURL = 'http://localhost:3000';
+
+      const getUsersSWR = () => fetch(`${baseURL}/api/users/swr`).then((res) => res.json())
+      const getUsers = () => fetch(`${baseURL}/api/users`).then((res) => res.json())
+
+      const $userListSWR = document.getElementById('user-list-swr');
+      const $userList = document.getElementById('user-list');
+      const $getUserSWRButton = document.getElementById('get-user-swr-button');
+      const $getUserButton = document.getElementById('get-user-button');
+      const $maxAgeTimer = document.getElementById('time');
+
+      const renderUsers = (users, $list) => {
+        const $userItemsFragment = document.createDocumentFragment();
+        users.forEach(user => {
+          const $userItem = document.createElement('li');
+          $userItem.textContent = user.name;
+          $userItemsFragment.appendChild($userItem);
+        });
+        $list.replaceChildren($userItemsFragment);
+      }
+
+      const renderTimes = () => {
+        if (interval) {
+          clearInterval(interval);
+        }
+        $maxAgeTimer.textContent = `时间:${new Date().toLocaleTimeString()}`
+        interval = setInterval(() => {
+          $maxAgeTimer.textContent = `时间:${new Date().toLocaleTimeString()}`
+        }, 1000);
+      }
+
+      $getUserSWRButton.addEventListener('click', () => {
+        renderTimes();
+        getUsersSWR().then(res => {
+          renderUsers(res.result, $userListSWR);
+        });
+      })
+
+      $getUserButton.addEventListener('click', () => {
+        renderTimes();
+        getUsers().then(res => {
+          renderUsers(res.result, $userList);
+        });
+      })
+
+    }
+  </script>
+</body>
+
+</html>
