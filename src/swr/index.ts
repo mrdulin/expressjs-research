@@ -14,6 +14,7 @@ app.get('/api/users/swr', (req, res) => {
     { id: faker.random.uuid(), name: faker.name.findName() },
     { id: faker.random.uuid(), name: faker.name.findName() }
   ];
+  console.log('users: ', users);
   res.setHeader('Cache-Control', 'max-age=5,stale-while-revalidate=10')
   res.json({ result: users })
 })
