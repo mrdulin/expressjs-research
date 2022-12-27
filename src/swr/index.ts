@@ -14,7 +14,7 @@ app.get('/api/users/swr', (req, res) => {
     { id: faker.random.uuid(), name: faker.name.findName() },
     { id: faker.random.uuid(), name: faker.name.findName() }
   ];
-  res.setHeader('Cache-Control', 'max-age=10,stale-while-revalidate=10')
+  res.setHeader('Cache-Control', 'max-age=5,stale-while-revalidate=10')
   res.json({ result: users })
 })
 
@@ -24,7 +24,7 @@ app.get('/api/users', (req, res) => {
     { id: faker.random.uuid(), name: faker.name.findName() },
     { id: faker.random.uuid(), name: faker.name.findName() }
   ];
-  res.setHeader('Cache-Control', 'max-age=10')
+  res.setHeader('Cache-Control', 'max-age=5')
   res.json({ result: users })
 })
 
