@@ -63,6 +63,7 @@
     "jsonwebtoken9": "npm:jsonwebtoken@^9.0.0",
     "knex": "^1.0.4",
     "lodash": "^4.17.20",
+    "mime": "^3.0.0",
     "moment": "^2.29.1",
     "mongodb": "^4.3.0",
     "morgan": "^1.10.0",
