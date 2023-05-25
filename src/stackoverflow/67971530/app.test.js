@@ -8,9 +8,10 @@ chai.use(chaiHttp);
 
 describe('Create Login and Register', () => {
   let server;
-  before(() => {
+  before((done) => {
     server = app.listen(3000, () => {
       console.log('started for testing');
+      done();
     });
   });
   after(() => {
