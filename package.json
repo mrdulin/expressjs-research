@@ -75,7 +75,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "node-fetch": "^2.6.1",
-    "nodemailer": "^6.9.2",
+    "nodemailer": "^6.9.3",
     "pg": "^7.18.1",
     "pg-promise": "^10.8.7",
     "pino": "^6.5.1",
@@ -114,7 +114,7 @@
     "@types/faker": "^5.1.5",
     "@types/json-server": "^0.14.4",
     "@types/jsonwebtoken": "^8.5.1",
-    "@types/lodash": "^4.14.194",
+    "@types/lodash": "^4.14.195",
     "@types/mocha": "^8.2.0",
     "@types/multer": "^1.4.7",
     "@types/pg": "^7.14.7",
@@ -159,6 +159,6 @@
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^5.0.4",
-    "vconsole": "^3.15.0"
+    "vconsole": "^3.15.1"
   }
 }
