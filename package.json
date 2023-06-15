@@ -12,6 +12,9 @@
     "express.js",
     "node.js"
   ],
+  "engines": {
+    "node": "^18"
+  },
   "author": "mrdulin",
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.338.0",
