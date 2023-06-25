@@ -34,6 +34,19 @@
         "uriFormat": "http://localhost:%s",
         "action": "openExternally"
       }
+    },
+    {
+      "name": "node",
+      "type": "node",
+      "request": "launch",
+      "args": ["${file}"],
+      "cwd": "${fileDirname}",
+      "console": "integratedTerminal"
+      // "serverReadyAction": {
+      //   "pattern": "listening on.* (https?://\\S+|[0-9]+)",
+      //   "uriFormat": "http://localhost:%s",
+      //   "action": "openExternally"
+      // }
     }
   ]
 }

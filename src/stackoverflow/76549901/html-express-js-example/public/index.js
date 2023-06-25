@@ -1,0 +1,18 @@
+import { html } from 'html-express-js';
+
+export const view = (data, state) => html`
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>Dashboard</title>
+    </head>
+
+    <body>
+      <h1>This is the dashboard!</h1>
+
+      <p>This file is served by the <code>staticIndexHandler</code> in app.js</p>
+
+      <p>Click <a href="/hello">here</a> to go hello route.</p>
+    </body>
+  </html>
+`;
