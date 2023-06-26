@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Learning express.js by examples",
   "scripts": {
-    "test": "mocha --require ts-node/register --require jsdom-global/register --timeout 5000",
+    "test": "mocha",
     "test:coverage": "nyc npm t",
     "generate": "echo 'generate'",
     "test:ava": "nyc ava --timeout=3000"

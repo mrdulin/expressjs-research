@@ -1,52 +1,48 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "runtimeArgs": [
-        "--inspect-brk",
-        "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-        "--require",
-        "ts-node/register",
-        "--require",
-        "jsdom-global/register",
-        "--timeout",
-        "5000"
-      ],
-      "args": ["${file}"],
-      "name": "Mocha Tests",
-      "request": "launch",
-      "skipFiles": ["<node_internals>/**"],
-      "type": "node",
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-    },
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"runtimeArgs": [
+				"--inspect-brk",
+				"${workspaceRoot}/node_modules/mocha/bin/_mocha",
+				"--config",
+				"${workspaceRoot}/.mocharc.js"
+			],
+			"args": ["${file}"],
+			"name": "Mocha Tests for single file",
+			"request": "launch",
+			"skipFiles": ["<node_internals>/**"],
+			"type": "node",
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen"
+		},
 
-    {
-      "name": "ts-node",
-      "type": "node",
-      "request": "launch",
-      "args": ["${file}"],
-      "runtimeArgs": ["-r", "ts-node/register"],
-      "cwd": "${workspaceRoot}",
-      "console": "integratedTerminal",
-      "serverReadyAction": {
-        "pattern": "listening on.* (https?://\\S+|[0-9]+)",
-        "uriFormat": "http://localhost:%s",
-        "action": "openExternally"
-      }
-    },
-    {
-      "name": "node",
-      "type": "node",
-      "request": "launch",
-      "args": ["${file}"],
-      "cwd": "${fileDirname}",
-      "console": "integratedTerminal"
-      // "serverReadyAction": {
-      //   "pattern": "listening on.* (https?://\\S+|[0-9]+)",
-      //   "uriFormat": "http://localhost:%s",
-      //   "action": "openExternally"
-      // }
-    }
-  ]
+		{
+			"name": "ts-node",
+			"type": "node",
+			"request": "launch",
+			"args": ["${file}"],
+			"runtimeArgs": ["-r", "ts-node/register"],
+			"cwd": "${workspaceRoot}",
+			"console": "integratedTerminal",
+			"serverReadyAction": {
+				"pattern": "listening on.* (https?://\\S+|[0-9]+)",
+				"uriFormat": "http://localhost:%s",
+				"action": "openExternally"
+			}
+		},
+		{
+			"name": "node",
+			"type": "node",
+			"request": "launch",
+			"args": ["${file}"],
+			"cwd": "${fileDirname}",
+			"console": "integratedTerminal"
+			// "serverReadyAction": {
+			//   "pattern": "listening on.* (https?://\\S+|[0-9]+)",
+			//   "uriFormat": "http://localhost:%s",
+			//   "action": "openExternally"
+			// }
+		}
+	]
 }
