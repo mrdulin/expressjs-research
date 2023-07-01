@@ -1,0 +1,15 @@
+{
+	"products": [
+		{ "id": 1, "title": "json-server", "author": "typicode" },
+		{ "id": 2, "title": "json-server", "author": "typicode" }
+	],
+	"users": [
+		{ "id": 1, "name": "user-1" },
+		{ "id": 2, "name": "user-2" }
+	],
+	"cart": [
+		{ "id": 1, "productId": 1, "userId": 1 },
+		{ "id": 2, "productId": 2, "userId": 1 },
+		{ "id": 3, "productId": 1, "userId": 2 }
+	]
+}
