@@ -2,7 +2,7 @@ module.exports = {
 	extension: ['.js', '.cjs'],
 	// spec: ['test'],
 
-	spec: ['test/**/*.spec.js'],
+	// spec: ['test/**/*.spec.js'],
 	// spec: ['test/a.spec.js', 'test/b.test.js'],
 
 	// extension: ['.spec.js'],
