@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="beacon-text-btn">Send beacon text</button>
+  <button id="beacon-blob-btn">Send beacon blob</button>
+
+  <script>
+    window.onload = () => {
+
+      const $beaconTextBtn = document.getElementById('beacon-text-btn');
+      const $beaconBlobBtn = document.getElementById('beacon-blob-btn');
+
+      $beaconTextBtn.addEventListener('click', () => {
+        const data = JSON.stringify({ event, time: performance.now() });
+        navigator.sendBeacon('/beacon/text', data);
+      });
+
+      $beaconBlobBtn.addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify({ event, time: performance.now() })], { type: 'application/json; charset=UTF-8' });
+        navigator.sendBeacon('/beacon/blob', blob);
+      })
+
+      // emit non-blocking beacon with session analytics as the page
+      // transitions to background state (Page Visibility API)
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') {
+          var sessionData = { url: document.URL }
+          navigator.sendBeacon('/beacon/text', JSON.stringify(sessionData));
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
