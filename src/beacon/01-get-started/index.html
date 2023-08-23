@@ -30,6 +30,7 @@
       // emit non-blocking beacon with session analytics as the page
       // transitions to background state (Page Visibility API)
       document.addEventListener('visibilitychange', function () {
+        console.log('visibilitychange');
         if (document.visibilityState === 'hidden') {
           var sessionData = { url: document.URL }
           navigator.sendBeacon('/beacon/text', JSON.stringify(sessionData));

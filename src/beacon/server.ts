@@ -4,7 +4,7 @@ import path from 'path';
 const app = express();
 
 app.get('/', (req, res) => {
-	res.sendFile(path.resolve(__dirname, './index.html'));
+	res.sendFile(path.resolve(__dirname, './01-get-started/index.html'));
 });
 
 app.post('/beacon/text', express.text(), (req, res) => {
