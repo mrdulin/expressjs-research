@@ -6,13 +6,12 @@ app.use(express.json());
 
 app.use(
 	cors({
-		exposedHeaders: ['Content-Length', 'Content-Type', 'Date'],
+		exposedHeaders: ['Content-Length', 'Content-Type'],
 	}),
 );
 
 app.post('/', (req, res) => {
-	console.log('test');
-	res.status(200).json({ result: [1, 2] });
+	res.status(401).json({ result: [1, 2] });
 });
 
 app.listen(5000, () => console.log('server listen at http://localhost:5000'));
