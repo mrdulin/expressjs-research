@@ -120,6 +120,7 @@
 		"@types/express-handlebars": "0.0.30",
 		"@types/express-http-proxy": "^1.6.3",
 		"@types/express-rate-limit": "^5.1.1",
+		"@types/express-serve-static-core": "^4.17.43",
 		"@types/express-session": "^1.17.7",
 		"@types/faker": "^5.1.5",
 		"@types/json-server": "^0.14.4",
