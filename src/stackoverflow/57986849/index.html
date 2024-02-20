@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload</title>
+</head>
+
+<body>
+  <form>
+    <input id="csv" name="csv" type="file" />
+    <input type="submit" value="Submit" id="submitClickEvt" />
+  </form>
+
+  <script type="text/javascript">
+    var submitClickEvt = document.getElementById('submitClickEvt');
+    submitClickEvt.addEventListener('click', submitClicked);
+    function submitClicked(event) {
+      event.preventDefault();
+      const $csv = document.getElementById('csv');
+
+      console.log($csv.value)
+      console.log($csv.files[0])
+
+      const file = $csv.files[0];
+      const formData = new FormData();
+      formData.append('csv', file);
+
+      ajaxCall(formData, "http://localhost:3000/user/uploadpdf", function (status, response) {
+        if (status == 200) {
+          alert(response.message)
+        } else {
+          alert('Error', status)
+        }
+      });
+    }
+
+    function ajaxCall(data, url, callback) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("POST", url, true);
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4) {
+          return callback(this.status, JSON.parse(xhttp.response));
+        }
+      }
+      xhttp.send(data);
+    }
+  </script>
+</body>
+
+</html>
